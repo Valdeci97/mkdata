@@ -2,11 +2,9 @@ package com.mkdata.api.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("pf")
 public class Individual extends Client {
   private String cpf;
   private String rg;
@@ -15,8 +13,8 @@ public class Individual extends Client {
   public Individual() {
   }
 
-  public Individual(String name, String cpf, String rg, String club, String status) {
-    super(name, club, status);
+  public Individual(String name, String cpf, String rg, String club, String status, String type) {
+    super(name, club, status, type);
     this.cpf = cpf;
     this.rg = rg;
     this.register_date = LocalDate.now();
@@ -30,7 +28,7 @@ public class Individual extends Client {
     return this.rg;
   }
 
-  public LocalDate getRegisteDate() {
+  public LocalDate getRegisterDate() {
     return this.register_date;
   }
 

@@ -2,18 +2,16 @@ package com.mkdata.api.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("pj")
 public class Corporate extends Client {
   private String cnpj;
   private String ie;
   private LocalDate register_date;
 
-  public Corporate(String name, String cnpj, String ie, String club, String status) {
-    super(name, club, status);
+  public Corporate(String name, String cnpj, String ie, String club, String status, String type) {
+    super(name, club, status, type);
     this.cnpj = cnpj;
     this.ie = ie;
     this.register_date = LocalDate.now();
