@@ -7,5 +7,5 @@ import com.mkdata.api.models.Corporate;
 
 @Repository
 public interface CorporateRepository extends JpaRepository<Corporate, Long> {
-
+  boolean cnpjExists(String cnpj);
 }
