@@ -6,12 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mkdata.api.exceptions.ClientAlreadyExistsException;
 import com.mkdata.api.exceptions.ClientNotFoundException;
-import com.mkdata.api.exceptions.CorporateClientAlreadyExistsException;
-import com.mkdata.api.exceptions.IndividualClientAlreadyExistsException;
 import com.mkdata.api.models.Client;
-import com.mkdata.api.models.Corporate;
-import com.mkdata.api.models.Individual;
+import com.mkdata.api.models.CorporateClient;
+import com.mkdata.api.models.IndividualClient;
 import com.mkdata.api.repositories.ClientRepository;
 import com.mkdata.api.repositories.CorporateRepository;
 import com.mkdata.api.repositories.IndividualRepository;
@@ -37,12 +36,12 @@ public class ClientService {
    * @param client
    * @return created client
    */
-  public Individual createIndividualClient(Individual client) {
+  public IndividualClient createIndividualClient(IndividualClient client) {
     String cpf = client.getCpf();
     if (individualRepository.existsByCpf(cpf)) {
-      throw new IndividualClientAlreadyExistsException(this.clientAlreadyExists);
+      throw new ClientAlreadyExistsException(this.clientAlreadyExists);
     }
-    Individual newClient = clientRepository.save(client);
+    IndividualClient newClient = clientRepository.save(client);
     return newClient;
   }
 
@@ -52,12 +51,12 @@ public class ClientService {
    * @param client
    * @return created client
    */
-  public Corporate createCorporateClient(Corporate client) {
+  public CorporateClient createCorporateClient(CorporateClient client) {
     String cnpj = client.getCnpj();
     if (corporateRepository.existsByCnpj(cnpj)) {
-      throw new CorporateClientAlreadyExistsException(this.clientAlreadyExists);
+      throw new ClientAlreadyExistsException(this.clientAlreadyExists);
     }
-    Corporate newClient = clientRepository.save(client);
+    CorporateClient newClient = clientRepository.save(client);
     return newClient;
   }
 
