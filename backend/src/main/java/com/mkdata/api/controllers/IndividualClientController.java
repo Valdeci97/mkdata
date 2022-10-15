@@ -3,11 +3,11 @@ package com.mkdata.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mkdata.api.dto.IndividualClientDto;
@@ -33,9 +33,9 @@ public class IndividualClientController {
     return ResponseEntity.status(HttpStatus.CREATED).body(newClient);
   }
 
-  @PutMapping
+  @PutMapping("/{id}")
   public ResponseEntity<IndividualClient> update(
-      @RequestParam("id") Long id,
+      @PathVariable("id") Long id,
       @RequestBody IndividualClientDto client) throws ClientNotFoundException {
     IndividualClient updatedClient = individualClientService.update(id, client);
     return ResponseEntity.status(HttpStatus.OK).body(updatedClient);
