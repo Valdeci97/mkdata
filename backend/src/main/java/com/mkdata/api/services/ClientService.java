@@ -39,7 +39,7 @@ public class ClientService {
    */
   public Individual createIndividualClient(Individual client) {
     String cpf = client.getCpf();
-    if (individualRepository.cpfExists(cpf)) {
+    if (individualRepository.existsByCpf(cpf)) {
       throw new IndividualClientAlreadyExistsException(this.clientAlreadyExists);
     }
     Individual newClient = clientRepository.save(client);
@@ -54,7 +54,7 @@ public class ClientService {
    */
   public Corporate createCorporateClient(Corporate client) {
     String cnpj = client.getCnpj();
-    if (corporateRepository.cnpjExists(cnpj)) {
+    if (corporateRepository.existsByCnpj(cnpj)) {
       throw new CorporateClientAlreadyExistsException(this.clientAlreadyExists);
     }
     Corporate newClient = clientRepository.save(client);
@@ -66,12 +66,12 @@ public class ClientService {
     return clients;
   }
 
-  public Optional<Client> listById(Long id) {
+  public Client listById(Long id) {
     Optional<Client> client = clientRepository.findById(id);
     if (client.isEmpty()) {
       throw new ClientNotFoundException(this.clientNotFound);
     }
-    return client;
+    return client.get();
   }
 
   public void delete(Long id) {
