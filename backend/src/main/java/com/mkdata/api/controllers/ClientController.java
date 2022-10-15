@@ -33,7 +33,8 @@ public class ClientController {
   }
 
   @DeleteMapping("/{id}")
-  public void delete(@PathVariable("id") Long id) {
+  public ResponseEntity<?> delete(@PathVariable("id") Long id) {
     clientService.delete(id);
+    return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
 }
