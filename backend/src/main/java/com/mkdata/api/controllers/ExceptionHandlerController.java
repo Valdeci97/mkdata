@@ -11,8 +11,14 @@ import com.mkdata.api.exceptions.GlobalError;
 @ControllerAdvice
 public class ExceptionHandlerController {
   @ExceptionHandler(ClientAlreadyExistsException.class)
-  public ResponseEntity<GlobalError> handleException(RuntimeException err) {
+  public ResponseEntity<GlobalError> handleConflitcException(RuntimeException err) {
     GlobalError message = new GlobalError(err.getMessage());
     return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
+  }
+
+  @ExceptionHandler
+  public ResponseEntity<GlobalError> handleNotFoundException(RuntimeException err) {
+    GlobalError message = new GlobalError(err.getMessage());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
   }
 }
