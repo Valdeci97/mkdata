@@ -7,5 +7,5 @@ import com.mkdata.api.models.Individual;
 
 @Repository
 public interface IndividualRepository extends JpaRepository<Individual, Long> {
-  boolean cpfExists(String cpf);
+  boolean existsByCpf(String cpf);
 }
