@@ -5,15 +5,15 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 
 @Entity
-public class Individual extends Client {
+public class IndividualClient extends Client {
   private String cpf;
   private String rg;
   private LocalDate register_date;
 
-  public Individual() {
+  public IndividualClient() {
   }
 
-  public Individual(String name, String cpf, String rg, String club, String status, String type) {
+  public IndividualClient(String name, String cpf, String rg, String club, String status, String type) {
     super(name, club, status, type);
     this.cpf = cpf;
     this.rg = rg;

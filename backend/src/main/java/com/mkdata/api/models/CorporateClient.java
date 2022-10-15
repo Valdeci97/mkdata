@@ -5,12 +5,12 @@ import java.time.LocalDate;
 import javax.persistence.Entity;
 
 @Entity
-public class Corporate extends Client {
+public class CorporateClient extends Client {
   private String cnpj;
   private String ie;
   private LocalDate register_date;
 
-  public Corporate(String name, String cnpj, String ie, String club, String status, String type) {
+  public CorporateClient(String name, String cnpj, String ie, String club, String status, String type) {
     super(name, club, status, type);
     this.cnpj = cnpj;
     this.ie = ie;
