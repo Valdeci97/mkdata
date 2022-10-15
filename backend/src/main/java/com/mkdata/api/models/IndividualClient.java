@@ -39,4 +39,8 @@ public class IndividualClient extends Client {
   public void setRg(String rg) {
     this.rg = rg;
   }
+
+  public void setRegisterDate() {
+    this.register_date = LocalDate.now();
+  }
 }

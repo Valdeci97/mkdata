@@ -41,6 +41,7 @@ public class ClientService {
     if (individualRepository.existsByCpf(cpf)) {
       throw new ClientAlreadyExistsException(this.clientAlreadyExists);
     }
+    client.setRegisterDate();
     IndividualClient newClient = clientRepository.save(client);
     return newClient;
   }
@@ -56,6 +57,7 @@ public class ClientService {
     if (corporateRepository.existsByCnpj(cnpj)) {
       throw new ClientAlreadyExistsException(this.clientAlreadyExists);
     }
+    client.setRegisterDate();
     CorporateClient newClient = clientRepository.save(client);
     return newClient;
   }

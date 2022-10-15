@@ -36,4 +36,8 @@ public class CorporateClient extends Client {
   public void setIe(String ie) {
     this.ie = ie;
   }
+
+  public void setRegisterDate() {
+    this.register_date = LocalDate.now();
+  }
 }
