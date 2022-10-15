@@ -10,6 +10,9 @@ public class CorporateClient extends Client {
   private String ie;
   private LocalDate register_date;
 
+  public CorporateClient() {
+  }
+
   public CorporateClient(String name, String cnpj, String ie, String club, String status, String type) {
     super(name, club, status, type);
     this.cnpj = cnpj;
