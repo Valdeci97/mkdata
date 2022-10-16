@@ -1,9 +1,12 @@
 import React from 'react';
+import Router from './Router';
+import GlobalStyle from './styles';
 
 export default function App() {
   return (
-    <div>
-      Hello World.
-    </div>
+    <>
+      <Router />
+      <GlobalStyle />
+    </>
   );
 };
