@@ -1,8 +1,28 @@
-import React from 'react';
+import { useState } from 'react';
 import Header from '../components/Header';
 import * as S from '../styles/login';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const VALID_USER = 'admin@admin.com';
+  const VALID_PASS = 'admin123';
+
+  function validateLogin(email, password) {
+    if (email !== VALID_USER || password !== VALID_PASS) {
+      return false;
+    }
+    return true;
+  }
+
+  function handleClick() {
+    if (!validateLogin(email, password)) {
+      return window.alert('Login inválido');
+    }
+    return window.alert('Login válido');
+  }
+
   return (
     <>
       <Header />
@@ -13,6 +33,8 @@ export default function Login() {
             id="email-input"
             type="text"
             placeholder="user@user.com"
+            value={ email }
+            onChange={({ target }) => setEmail(target.value)}
           />
         </S.Label>
         <S.Label htmlFor="password-input">
@@ -21,9 +43,16 @@ export default function Login() {
             id="password-input"
             type="password"
             placeholder="********"
+            value={ password }
+            onChange={({ target }) => setPassword(target.value)}
           />
         </S.Label>
-        <S.Button>Entrar</S.Button>
+        <S.Button
+          type="button"
+          onClick={() => handleClick()}
+        >
+          Entrar
+        </S.Button>
       </S.FormContainer>
     </>
   );
