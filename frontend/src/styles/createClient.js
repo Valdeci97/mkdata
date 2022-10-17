@@ -34,5 +34,19 @@ export const Select = styled.select`
 `;
 
 export const CreateClientButton = styled.button`
-  
+  background: #71A9F7;
+  border: none;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1.25rem;
+  height: 2rem;
+  width: 8rem;
+
+  &:hover {
+    background: #0D68E7;
+    cursor: pointer;
+    height: 2.25rem;
+    transition: all ease 0.5s;
+    width: 10rem;
+  }
 `;
