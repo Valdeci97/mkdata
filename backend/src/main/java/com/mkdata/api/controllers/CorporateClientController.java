@@ -3,6 +3,7 @@ package com.mkdata.api.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,6 +18,7 @@ import com.mkdata.api.models.CorporateClient;
 import com.mkdata.api.services.ClientService;
 import com.mkdata.api.services.CorporateClientService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/clients/pj")
 public class CorporateClientController {
