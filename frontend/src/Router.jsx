@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import CreateClient from './pages/CreateClient';
+import HealthGroup from './pages/HealthGroup';
 import Login from './pages/Login';
 
 export default function Router() {
@@ -9,6 +10,7 @@ export default function Router() {
       <Route path="/" element={ <Navigate to="/login" replace /> } />
       <Route path="/login" element={ <Login /> } />
       <Route path="/create" element={ <CreateClient /> } />
+      <Route path="/health" element={ <HealthGroup /> } />
     </Routes>
   );
 };
