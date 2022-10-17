@@ -18,6 +18,22 @@ export async function createIndividualClient(client) {
     });
     return newClient;
   } catch (err) {
-    console.error(err);
+    return null;
+  }
+}
+
+export async function createCorporateClient(client) {
+  try {
+    const newClient = await API.post('/pj', {
+      name: client.name,
+      club: client.club,
+      status: client.status,
+      type: client.type,
+      cnpj: client.cnpj,
+      ie: client.ie,
+    });
+    return newClient;
+  } catch (err) {
+    return null;
   }
 }
