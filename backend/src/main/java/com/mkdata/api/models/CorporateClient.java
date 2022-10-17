@@ -28,7 +28,7 @@ public class CorporateClient extends Client {
     return this.ie;
   }
 
-  public LocalDate getRegisteDate() {
+  public LocalDate getRegisterDate() {
     return this.register_date;
   }
 
