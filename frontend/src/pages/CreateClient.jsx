@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import * as S from '../styles/createClient';
+import { createIndividualClient } from '../utils/server';
 
 export default function CreateClient() {
   const [name, setName] = useState('');
@@ -35,6 +36,12 @@ export default function CreateClient() {
       return;
     }
     secondFunc(value);
+  }
+
+  const handleClick = async () => {
+    const client = { name, club: group, status, type, cpf, rg };
+    const newClient = await createIndividualClient(client);
+    console.log(newClient);
   }
 
   return (
@@ -101,7 +108,7 @@ export default function CreateClient() {
             onChange={({ target }) => handlePfInput(target.value, setRg, setIe)}
           />
         </S.Label>
-        <S.CreateClientButton>
+        <S.CreateClientButton type="button" onClick={ handleClick }>
           Criar
         </S.CreateClientButton>
       </S.FormContainer>
