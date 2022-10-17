@@ -28,7 +28,7 @@ export default function Login() {
       <Header />
       <S.FormContainer>
         <S.Label htmlFor="email-input">
-          Email:
+          Email
           <S.Input
             id="email-input"
             type="text"
@@ -38,7 +38,7 @@ export default function Login() {
           />
         </S.Label>
         <S.Label htmlFor="password-input">
-          Senha:
+          Senha
           <S.Input
             id="password-input"
             type="password"
