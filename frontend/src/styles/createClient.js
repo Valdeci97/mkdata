@@ -32,3 +32,7 @@ export const Select = styled.select`
   text-align: center;
   width: 10rem;
 `;
+
+export const CreateClientButton = styled.button`
+  
+`;
