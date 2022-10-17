@@ -65,12 +65,16 @@ export default function CreateClient() {
         </S.Label>
         <S.Label htmlFor="group">
           Grupo
-          <S.Input
+          <S.Select
             id="group"
-            type="text"
             value={ group }
             onChange={({ target }) => setGroup(target.value)}
-          />
+          >
+            <option value="saúde">saúde</option>
+            <option value="tech">tecnologia inf</option>
+            <option value="financeiro">financeiro</option>
+            <option value="outros">outros</option>
+          </S.Select>
         </S.Label>
         <S.Label htmlFor="status">
           Status
