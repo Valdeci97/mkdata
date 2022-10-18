@@ -82,4 +82,9 @@ public class ClientService {
     }
     clientRepository.deleteById(id);
   }
+
+  public List<Client> getByClub(String club) {
+    List<Client> clients = clientRepository.findByClub(club);
+    return clients;
+  }
 }

@@ -39,4 +39,10 @@ public class ClientController {
     clientService.delete(id);
     return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
   }
+
+  @GetMapping("/club/{club}")
+  public ResponseEntity<List<Client>> listByClub(@PathVariable("club") String club) {
+    List<Client> clients = clientService.getByClub(club);
+    return ResponseEntity.status(HttpStatus.OK).body(clients);
+  }
 }
