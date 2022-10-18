@@ -1,10 +1,17 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import ClientGroupCard from '../components/ClientGroupCard';
 import NavigationBar from '../components/NavigationBar';
-import { clients } from '../utils/mock/clients';
 import { GroupContainer } from '../styles/clientGroupCard';
+import { setupClientsByClub } from '../utils/helpers';
+import { getClientByClub } from '../utils/server';
 
 export default function HealthGroup() {
+  const [clients, setClients] = useState([]);
+
+  useEffect(() => {
+    setupClientsByClub('saúde', getClientByClub, setClients);
+  }, []);
+
   return (
     <>
       <NavigationBar />

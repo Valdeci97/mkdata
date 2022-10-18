@@ -99,3 +99,12 @@ export async function updateCorporateClient(id, client) {
   }
 }
 
+export async function getClientByClub(club) {
+  if (!club) return false;
+  try {
+    const clients = await API.get(`/club/${club}`);
+    return clients.data;
+  } catch (err) {
+    return null;
+  }
+}
