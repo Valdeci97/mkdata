@@ -41,7 +41,7 @@ export async function createCorporateClient(client) {
 export async function getClients() {
   try {
     const clients = await API.get();
-    return clients;
+    return clients.data;
   } catch (err) {
     return null;
   }
