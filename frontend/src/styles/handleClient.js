@@ -33,7 +33,7 @@ export const Select = styled.select`
   width: 10rem;
 `;
 
-export const CreateClientButton = styled.button`
+export const Button = styled.button`
   background: #71A9F7;
   border: none;
   border-radius: 0.5rem;

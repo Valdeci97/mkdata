@@ -16,7 +16,7 @@ export async function createIndividualClient(client) {
       cpf: client.cpf,
       rg: client.rg,
     });
-    return newClient;
+    return newClient.data;
   } catch (err) {
     return null;
   }
@@ -32,7 +32,7 @@ export async function createCorporateClient(client) {
       cnpj: client.cnpj,
       ie: client.ie,
     });
-    return newClient;
+    return newClient.data;
   } catch (err) {
     return null;
   }
@@ -51,7 +51,7 @@ export async function getClientById(id) {
   if (!id) return false;
   try {
     const client = await API.get(`/${id}`);
-    return client;
+    return client.data;
   } catch (err) {
     return null;
   }
@@ -68,7 +68,6 @@ export async function destroyClient(id) {
 }
 
 export async function updateIndividualClient(id, client) {
-  if (!id) return false;
   try {
     const updatedClient = await API.put(`/pf/${id}`, {
       name: client.name,
@@ -84,7 +83,6 @@ export async function updateIndividualClient(id, client) {
 }
 
 export async function updateCorporateClient(id, client) {
-  if (!id) return false;
   try {
     const updatedClient = await API.put(`/pj/${id}`, {
       name: client.name,

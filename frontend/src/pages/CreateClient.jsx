@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
-import * as S from '../styles/createClient';
+import * as S from '../styles/handleClient';
 import { createIndividualClient, createCorporateClient } from '../utils/server';
+import { handlePfInput } from '../utils/helpers';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateClient() {
   const [name, setName] = useState('');
-  const [group, setGroup] = useState('');
+  const [group, setGroup] = useState('saúde');
   const [status, setStatus] = useState('ativo');
   const [type, setType] = useState('pf');
   const [cpf, setCpf] = useState('');
@@ -13,6 +15,8 @@ export default function CreateClient() {
   const [isPf, setIsPf] = useState(true);
   const [cnpj, setCpnj] = useState('');
   const [ie, setIe] = useState('');
+
+  const navigate = useNavigate();
 
   const handlePfState = (firstFunc, secondFunc, thirdFunc, fourthFunc) => {
     if (isPf) {
@@ -30,24 +34,17 @@ export default function CreateClient() {
     handlePfState(setCpf, setRg, setCpnj, setIe);
   }
 
-  const handlePfInput = (value, firstFunc, secondFunc) => {
-    if (isPf) {
-      firstFunc(value);
-      return;
-    }
-    secondFunc(value);
-  }
-
   const handleClick = async () => {
     if (type === 'pf') {
       const client = { name, club: group, status, type, cpf, rg };
       const newClient = await createIndividualClient(client);
-      console.log(newClient);
-      return;
+      if (!newClient) return window.alert('Não foi possível criar');
+      return navigate('/clients');
     }
     const client = { name, club: group, status, type, cnpj, ie };
     const newClient = await createCorporateClient(client);
-    console.log(newClient);
+    if (!newClient) return window.alert('Não foi possível criar');
+    navigate('/clients');
   }
 
   return (
@@ -105,7 +102,7 @@ export default function CreateClient() {
             type="text"
             maxLength={ isPf ? 11 : 14 }
             value={ isPf ? cpf : cnpj }
-            onChange={({ target }) => handlePfInput(target.value, setCpf, setCpnj)}
+            onChange={({ target }) => handlePfInput(isPf, target.value, setCpf, setCpnj)}
           />
         </S.Label>
         <S.Label htmlFor="specific-input-2">
@@ -115,12 +112,12 @@ export default function CreateClient() {
             type="text"
             maxLength="9"
             value={ isPf ? rg : ie }
-            onChange={({ target }) => handlePfInput(target.value, setRg, setIe)}
+            onChange={({ target }) => handlePfInput(isPf, target.value, setRg, setIe)}
           />
         </S.Label>
-        <S.CreateClientButton type="button" onClick={ handleClick }>
+        <S.Button type="button" onClick={ handleClick }>
           Criar
-        </S.CreateClientButton>
+        </S.Button>
       </S.FormContainer>
     </>
   );

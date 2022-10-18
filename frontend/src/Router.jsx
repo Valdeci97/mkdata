@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Clients from './pages/Clients';
 import CreateClient from './pages/CreateClient';
+import EditClient from './pages/EditClient';
 import FinanceGroup from './pages/FinanceGroup';
 import HealthGroup from './pages/HealthGroup';
 import Login from './pages/Login';
@@ -19,6 +20,7 @@ export default function Router() {
       <Route path="/tech" element={ <TechGroup /> } />
       <Route path="/finance" element={ <FinanceGroup /> } />
       <Route path="/others" element={ <OthersGroup /> } />
+      <Route path="/clients/:id" element={ <EditClient /> } />
     </Routes>
   );
 };
