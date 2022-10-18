@@ -5,6 +5,7 @@ import CreateClient from './pages/CreateClient';
 import FinanceGroup from './pages/FinanceGroup';
 import HealthGroup from './pages/HealthGroup';
 import Login from './pages/Login';
+import OthersGroup from './pages/OthersGroup';
 import TechGroup from './pages/TechGroup';
 
 export default function Router() {
@@ -17,6 +18,7 @@ export default function Router() {
       <Route path="/clients" element={ <Clients /> } />
       <Route path="/tech" element={ <TechGroup /> } />
       <Route path="/finance" element={ <FinanceGroup /> } />
+      <Route path="/others" element={ <OthersGroup /> } />
     </Routes>
   );
 };
