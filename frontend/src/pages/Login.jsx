@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import * as S from '../styles/login';
 
@@ -8,6 +9,8 @@ export default function Login() {
 
   const VALID_USER = 'admin@admin.com';
   const VALID_PASS = 'admin123';
+
+  const navigate = useNavigate();
 
   function validateLogin(email, password) {
     if (email !== VALID_USER || password !== VALID_PASS) {
@@ -20,7 +23,7 @@ export default function Login() {
     if (!validateLogin(email, password)) {
       return window.alert('Login inválido');
     }
-    return window.alert('Login válido');
+    navigate('/create');
   }
 
   return (
@@ -49,7 +52,7 @@ export default function Login() {
         </S.Label>
         <S.Button
           type="button"
-          onClick={() => handleClick()}
+          onClick={ handleClick }
         >
           Entrar
         </S.Button>
