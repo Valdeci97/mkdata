@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://mkadatachallenge-env.eba-bymdnusu.us-east-1.elasticbeanstalk.com/clients';
+const baseURL = 'https://mkadatachallenge-env.eba-bymdnusu.us-east-1.elasticbeanstalk.com/clients';
 
 const API = axios.create({
   baseURL
