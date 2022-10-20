@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8080/clients'
+const baseURL = 'http://mkadatachallenge-env.eba-bymdnusu.us-east-1.elasticbeanstalk.com/clients';
 
 const API = axios.create({
-  baseURL 
+  baseURL
 });
 
 export async function createIndividualClient(client) {
