@@ -42,6 +42,12 @@ Clone o repositório:
 ```
 git clone git@github.com:Valdeci97/mkdata.git
 ```
+Mude para a pasta do projeto:
+
+```
+cd mkdata
+```
+
 Inicie os containeres:
 
 ```
